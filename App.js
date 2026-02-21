@@ -9,7 +9,7 @@ import { categories } from "./data/categories";
 import axios from "axios";
 import "./App.css";
 
-const API = "http://localhost:5000";
+const API = "to-do-backend-production-f35b.up.railway.app";
 
 function App() {
   const [token, setToken] = useState(
