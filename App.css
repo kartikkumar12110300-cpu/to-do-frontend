@@ -1,0 +1,410 @@
+@import url("https://fonts.googleapis.com/css?family=Inter:400,500,600,700&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #e5e7eb;
+  font-family: "Inter", sans-serif;
+}
+
+/* PHONE FRAME */
+.wrapper {
+  position: relative;
+  height: 50rem;
+  width: 25rem;
+  border-radius: 40px;
+  border: 12px solid #2e2e2e;
+  overflow: hidden;
+  background: #fff;
+  display: flex;
+}
+
+/* BLUE TOP CURVE BACKGROUND */
+.screen-backdrop {
+  width: 140%;
+  height: 26rem;
+  position: absolute;
+  top: -5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  border-radius: 50%;
+  background-color: #39a6f0;
+  z-index: 0;
+}
+
+/* Screens */
+.screen {
+  min-width: 100%;
+  transition: 0.4s ease;
+  z-index: 1;
+}
+
+.wrapper.show-category .home-screen {
+  transform: translateX(-100%);
+}
+
+.wrapper.show-category .category-screen {
+  transform: translateX(-100%);
+}
+
+/* HEADER */
+.head-wrapper {
+  padding: 30px;
+  color: white;
+}
+
+.menu-btn,
+.back-btn {
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.welcome {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.welcome h1 {
+  font-size: 1.4rem;
+}
+
+.welcome p {
+  font-size: 0.9rem;
+  opacity: 0.9;
+}
+
+.welcome .img img {
+  width: 60px;
+}
+
+/* CATEGORY LIST */
+.categories-wrapper {
+  padding: 0 30px;
+  margin-top: 20px;
+  height: calc(100% - 200px);
+  overflow-y: auto;
+}
+
+.category {
+  background: white;
+  border-radius: 15px;
+  padding: 20px;
+  margin-bottom: 15px;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.08);
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.category:hover {
+  transform: translateY(-5px);
+}
+
+.category .left {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.category img {
+  width: 45px;
+}
+
+.category h1 {
+  font-size: 1rem;
+}
+
+.category p {
+  font-size: 0.8rem;
+  opacity: 0.6;
+}
+
+/* CATEGORY SCREEN */
+.category-details {
+  padding: 30px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  color: white;
+}
+
+.category-details img {
+  width: 60px;
+}
+
+.tasks-wrapper {
+  padding: 0 30px;
+  height: calc(100% - 230px);
+  overflow-y: auto;
+}
+
+/* TASK CARD */
+.task-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.task {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  width: 100%;
+  cursor: pointer;
+}
+
+.task input {
+  display: none;
+}
+
+.checkmark {
+  width: 18px;
+  height: 18px;
+  border-radius: 4px;
+  border: 2px solid #2e2e2e;
+  margin-top: 3px;
+}
+
+.task input:checked ~ .checkmark {
+  background: #2e2e2e;
+}
+
+.task-content {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.task-content p {
+  font-size: 0.9rem;
+}
+
+.task input:checked ~ .task-content p {
+  text-decoration: line-through;
+  opacity: 0.6;
+}
+
+.due-date {
+  font-size: 0.7rem;
+  opacity: 0.6;
+}
+
+/* PRIORITY BADGES */
+.priority {
+  width: fit-content;
+  padding: 3px 8px;
+  border-radius: 12px;
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: white;
+}
+
+.priority.low {
+  background-color: #2ecc71;
+}
+
+.priority.medium {
+  background-color: #f1c40f;
+  color: black;
+}
+
+.priority.hard {
+  background-color: #e74c3c;
+}
+
+/* DELETE BUTTON */
+.delete {
+  font-size: 18px;
+  cursor: pointer;
+  padding: 5px;
+}
+
+/* FLOATING ADD BUTTON */
+.add-task-btn {
+  position: absolute;
+  bottom: 25px;
+  right: 25px;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: #39a6f0;
+  color: white;
+  font-size: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+  transition: 0.3s;
+}
+
+.add-task-btn:hover {
+  transform: scale(1.1);
+}
+
+/* MODAL */
+.black-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: 25;          /* Below modal, above screen */
+}
+
+
+.add-task {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: white;
+  padding: 25px;
+  border-radius: 25px 25px 0 0;
+  z-index: 30;          /* VERY IMPORTANT */
+}
+
+
+.heading {
+  margin-bottom: 15px;
+}
+
+.input-group {
+  margin-bottom: 15px;
+}
+
+.input-group input,
+.input-group select {
+  width: 100%;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+}
+
+.btns {
+  display: flex;
+  justify-content: space-between;
+}
+
+.add-btn {
+  background: #39a6f0;
+  color: white;
+  border: none;
+  padding: 8px 18px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.no-tasks {
+  text-align: center;
+  margin-top: 60px;
+  opacity: 0.6;
+}
+
+
+/* ================= LOGIN SCREEN ================= */
+
+.login-wrapper {
+  justify-content: center;
+  align-items: center;
+}
+
+.login-screen {
+  width: 100%;
+  padding: 40px 30px;
+  z-index: 1;
+  text-align: center;
+  color: white;
+}
+
+.login-header h1 {
+  margin-bottom: 10px;
+}
+
+.login-header p {
+  opacity: 0.9;
+  margin-bottom: 40px;
+}
+
+.login-card {
+  background: white;
+  padding: 25px;
+  border-radius: 20px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+  color: black;
+}
+
+.login-card .input-group {
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+.login-card input {
+  width: 100%;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+}
+
+.login-btn {
+  width: 100%;
+  padding: 12px;
+  border-radius: 8px;
+  border: none;
+  background: #39a6f0;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.login-btn:hover {
+  background: #2d8dd6;
+}
+
+.top-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logout-btn {
+  background: white;
+  color: #39a6f0;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  cursor: pointer;
+  font-weight: 600;
+  transition: 0.3s;
+}
+
+.logout-btn:hover {
+  background: #f0f0f0;
+}
+.add-task-btn {
+  z-index: 20;
+}
+.screen-backdrop {
+  z-index: 0;
+}
+
+.switch-text {
+  margin-top: 15px;
+  font-size: 0.8rem;
+  text-align: center;
+}
+
+.switch-text span {
+  color: #39a6f0;
+  cursor: pointer;
+  font-weight: 600;
+}
